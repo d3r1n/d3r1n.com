@@ -6,7 +6,6 @@
 I made this website using Vue3 and [Lanyard API](https://github.com/Phineas/lanyard). \
 Thanks to [@5elenay](https://github.com/5elenay) and [@iamtuhana](https://github.com/iamtuhana) for their help <3
 
----
 <br>
 
 <h2>Configure for your self</h2>

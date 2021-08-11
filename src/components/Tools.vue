@@ -67,7 +67,7 @@ let skills = [
 	},
 	{
 		name: "MongoDB",		
-		link: "https://"
+		link: "https://www.mongodb.com/"
 	},
 	{
 		name: "JavaScript",
@@ -81,19 +81,19 @@ let skills = [
 	},
 	{
 		name: "Docker",		
-		link: "https://"
+		link: "https://docker.com"
 	},
 	{
 		name: "Linux",		
-		link: "https://"
+		link: "https://linux.org"
 	},
 	{
 		name: "Vim",		
-		link: "https://"
+		link: "https://vim.org"
 	},
 	{
 		name: "Vs Code",		
-		link: "https://"
+		link: "https://code.visualstudio.com"
 	}
 ]
 

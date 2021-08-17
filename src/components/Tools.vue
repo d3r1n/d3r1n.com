@@ -10,7 +10,9 @@
 		<div class="tools">
 			<div class="skill_container">
 				<div class="skill" v-for="skill in skills" @click="openSite(skill.link)" :key="skill">
-					<p>{{ skill.name }}</p>
+
+					<p v-if="skill.class == undefined" class="hover-underline">{{ skill.name }}</p>
+					<p v-else class="long hover-underline">{{ skill.name }}</p>
 				</div>
 			</div>
 

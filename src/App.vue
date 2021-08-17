@@ -3,6 +3,7 @@
 		<About :lanyard="lanyard" :toggle="toggle"/>
 		<Tools />
 		<PopUp :obj="SpotifyObject" :toggle="toggle" v-if="isOpen"/>
+		<Github />
 	</div>
 </template>
 
@@ -15,13 +16,15 @@ const CONFIG = {
 import About from './components/About.vue'
 import Tools from './components/Tools.vue'
 import PopUp from './components/PopUp.vue'
+import Github from './components/Github.vue'
 
 export default {
 	name: 'App',
 	components: {
 		About,
 		Tools,
-		PopUp
+		PopUp,
+		Github
 	},
 	data() {
 		return { 
@@ -107,7 +110,6 @@ export default {
 					const user = reqDataJSON.d;
 					this.lanyard.status = Colors[user.discord_status]
 					this.SpotifyObject = user.spotify
-
 
 					console.log("%c LANYARD_PRESENCE UPDATE", "color: pink; background: black; font-weight: bold;")
 				}

@@ -111,6 +111,8 @@ export default {
 
 	.repo:hover {
 		transform: scale(1.1) translateY(-15px);
+		-webkit-box-shadow: 0px 10px 21px -12px rgb(0 0 0 / 75%);
+		box-shadow: 0px 50px 50px -12px rgb(0 0 0 / 75%);
 	}
 
 	.repo_top {

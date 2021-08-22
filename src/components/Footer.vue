@@ -52,6 +52,7 @@ export default {
 
 #footer_github {
 	color: #bd93f9;
+	text-shadow: 0 0 20px #bd93f9;
 }
 
 </style>

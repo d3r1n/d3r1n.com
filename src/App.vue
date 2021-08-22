@@ -44,6 +44,9 @@ export default {
 		}
 	},
 	async mounted() {
+
+		console.log("%c DEBUG CONSOLE ", "color: green; background: black; font-weight: bold; font-size: 20px;")
+
 		const OPCODES = {
 			INFO: 0,
 			HELLO: 1,

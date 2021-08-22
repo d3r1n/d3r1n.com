@@ -38,9 +38,7 @@ export default {
 	},
 	methods: {
 		openSpotify(id) {
-
-			window.open("https://open.spotify.com/track/" + this.obj.id + "/");
-
+			window.open("https://open.spotify.com/track/" + id + "/");
 		}
 	}
 

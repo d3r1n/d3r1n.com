@@ -104,16 +104,15 @@ export default {
 					if (user.activities.length > 0) {
 						for (let activity of user.activities) {
 							if (activity.type == 2) {
-								let ActivityObject = {
+								let SpotifyObject = {
 									name: activity.name,
-									// https://i.scdn.co/image/ab67616d0000b2734ea617c398a01a5228069744
 									LargeImage: `https://i.scdn.co/image/${activity.assets.large_image.replace("spotify:", "")}`,
 									MainText: activity.details,
 									SecondaryText: activity.state,
 									track_id: activity.sync_id
 								}
 								this.PresenceType = 1
-								this.PresenceObject = ActivityObject
+								this.PresenceObject = SpotifyObject
 
 								document.querySelector(".profile").style.cursor = "pointer"
 							}
@@ -148,7 +147,7 @@ export default {
 					if (user.activities.length > 0) {
 						for (let activity of user.activities) {
 							if (activity.type == 2) {
-								let ActivityObject = {
+								let SpotifyObject = {
 									name: activity.name,
 									LargeImage: `https://cdn.discordapp.com/app-assets/${activity.application_id}/${activity.assets.large_image}.png?size=512`,
 									MainText: activity.details,
@@ -156,7 +155,7 @@ export default {
 									track_id: activity.sync_id
 								}
 								this.PresenceType = 1
-								this.PresenceObject = ActivityObject
+								this.PresenceObject = SpotifyObject
 
 								document.querySelector(".profile").style.cursor = "pointer"
 							}

@@ -105,10 +105,10 @@ export default {
 						for (let activity of user.activities) {
 							if (activity.type == 2) {
 								let SpotifyObject = {
-									name: activity.name,
+									name: activity.details,
 									LargeImage: `https://i.scdn.co/image/${activity.assets.large_image.replace("spotify:", "")}`,
-									MainText: activity.details,
-									SecondaryText: activity.state,
+									MainText: activity.state,
+									SecondaryText: activity.assets.large_text,
 									track_id: activity.sync_id
 								}
 								this.PresenceType = 1

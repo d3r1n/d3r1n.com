@@ -38,6 +38,7 @@ export default {
 	color: #fb3640;
 	font-size: 18px;
 	font-weight: bold;
+	text-shadow: 0 0 20px #fb3640;
 }
 
 .footer p {

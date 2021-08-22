@@ -46,12 +46,17 @@
 				<img :src="`https://cdn.discordapp.com/avatars/${lanyard.id}/${lanyard.avatar}.png?size=512`" v-else>
 			</div>
 			
-			<div id="info" v-if="lanyard.listening_spotify">
+			<div id="info" v-if="PresenceType == 1">
 				<span><span id="name">{{ lanyard.name }}</span><span id="tag">#{{ lanyard.tag }}</span></span>
 				<span id="spt">Listening To Spotify...</span>
 			</div>
 
-			<div id="info" v-else>
+			<div id="info" v-if="PresenceType == 2">
+				<span><span id="name">{{ lanyard.name }}</span><span id="tag">#{{ lanyard.tag }}</span></span>
+				<span id="spt">Coding in Vs Code...</span>
+			</div>
+
+			<div id="info" v-if="PresenceType == 0">
 				<span><span id="name">{{ lanyard.name }}</span><span id="tag">#{{ lanyard.tag }}</span></span>
 			</div>
 		</div>
@@ -62,11 +67,11 @@
 
 export default {
 	name: 'About',
-	props: ["lanyard", "toggle"],
+	props: ["lanyard", "PresenceType","toggle"],
 	mounted() {
 		const profile = document.querySelector(".profile")
 
-		if (this.lanyard.listening_spotify) {
+		if (this.PresenceType != 0) {
 			profile.classList.add("scale")
 		}
 		else {

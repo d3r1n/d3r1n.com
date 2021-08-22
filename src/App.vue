@@ -1,8 +1,8 @@
 <template>
 	<div class="center">
-		<About :lanyard="lanyard" :toggle="toggle"/>
+		<About :lanyard="lanyard" :PresenceType="PresenceType" :toggle="toggle"/>
 		<Tools />
-		<PopUp :obj="SpotifyObject" :toggle="toggle" v-if="isOpen"/>
+		<PopUp :obj="PresenceObject" :PresenceType="PresenceType" :toggle="toggle" v-if="isOpen"/>
 		<Github />
 		<Footer />
 	</div>
@@ -31,7 +31,8 @@ export default {
 	},
 	data() {
 		return { 
-			SpotifyObject: {},
+			PresenceObject: {},
+			PresenceType: 0,
 			isOpen: false,
 			lanyard: {
 				id: String,
@@ -39,7 +40,6 @@ export default {
 				avatar: undefined,
 				tag: "3199",
 				status: "#99aab5",
-				listening_spotify: true,
 			},
 		}
 	},
@@ -101,12 +101,41 @@ export default {
 						tag: user.discord_user.discriminator,
 					}
 
-					if (user.listening_to_spotify == true) {
-						this.SpotifyObject = user.spotify
-						this.lanyard.listening_spotify= user.listening_to_spotify
-						document.querySelector(".profile").style.cursor = "pointer"
+					if (user.activities.length > 0) {
+						for (let activity of user.activities) {
+							if (activity.type == 2) {
+								let ActivityObject = {
+									name: activity.name,
+									// https://i.scdn.co/image/ab67616d0000b2734ea617c398a01a5228069744
+									LargeImage: `https://i.scdn.co/image/${activity.assets.large_image.replace("spotify:", "")}`,
+									MainText: activity.details,
+									SecondaryText: activity.state,
+									track_id: activity.sync_id
+								}
+								this.PresenceType = 1
+								this.PresenceObject = ActivityObject
+
+								document.querySelector(".profile").style.cursor = "pointer"
+							}
+							else if (activity.type == 0) {
+								let ActivityObject = {
+									name: activity.name,
+									LargeImage: `https://cdn.discordapp.com/app-assets/${activity.application_id}/${activity.assets.large_image}.png?size=512`,
+									MainText: activity.details,
+									SecondaryText: activity.state,
+								}
+								this.PresenceType = 2
+								this.PresenceObject = ActivityObject
+
+								document.querySelector(".profile").style.cursor = "pointer"
+							}
+						}
 					}
 
+					else {
+						this.PresenceType = 0
+						document.querySelector(".profile").style.cursor = "auto"
+					}
 
 					this.lanyard.status = Colors[user.discord_status]
 
@@ -115,7 +144,41 @@ export default {
 				else if (reqDataJSON.t == "PRESENCE_UPDATE") {
 					const user = reqDataJSON.d;
 					this.lanyard.status = Colors[user.discord_status]
-					this.SpotifyObject = user.spotify
+
+					if (user.activities.length > 0) {
+						for (let activity of user.activities) {
+							if (activity.type == 2) {
+								let ActivityObject = {
+									name: activity.name,
+									LargeImage: `https://cdn.discordapp.com/app-assets/${activity.application_id}/${activity.assets.large_image}.png?size=512`,
+									MainText: activity.details,
+									SecondaryText: activity.state,
+									track_id: activity.sync_id
+								}
+								this.PresenceType = 1
+								this.PresenceObject = ActivityObject
+
+								document.querySelector(".profile").style.cursor = "pointer"
+							}
+							else if (activity.type == 0) {
+								let ActivityObject = {
+									name: activity.name,
+									LargeImage: `https://cdn.discordapp.com/app-assets/${activity.application_id}/${activity.assets.large_image}.png?size=512`,
+									MainText: activity.details,
+									SecondaryText: activity.state,
+								}
+								this.PresenceType = 2
+								this.PresenceObject = ActivityObject
+
+								document.querySelector(".profile").style.cursor = "pointer"
+							}
+						}
+					}
+
+					else {
+						this.PresenceType = 0
+						document.querySelector(".profile").style.cursor = "auto"
+					}
 
 					console.log("%c LANYARD_PRESENCE UPDATE", "color: pink; background: black; font-weight: bold;")
 				}
@@ -125,7 +188,7 @@ export default {
 
 	methods: {
 		toggle() {
-			if(this.lanyard.listening_spotify == true) {
+			if(this.PresenceType != 0) {
 				this.isOpen = !this.isOpen;
 			}
 			console.log(this.isOpen)

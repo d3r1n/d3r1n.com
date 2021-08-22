@@ -1,14 +1,27 @@
 <template>
 	<div class="modal" @click="toggle()">
-		<div class="contanier" @click="openSpotify(obj.track_id)">
-			<div class="spotify">
-				<span id="art">
-					<img :src="obj.album_art_url" :alt="obj.album">
+		<div class="contanier" @click="openSpotify(obj.track_id)" v-if="PresenceType == 1">
+			<div class="presence">
+				<span id="cover">
+					<img :src="obj.LargeImage">
 				</span>
 				<span class="info">
-					<p id="song">{{ obj.song }}</p>
-					<p id="artist">By {{ obj.artist }}</p>
-					<p id="album">In {{ obj.album }}</p>
+					<p id="name">{{ obj.name }}</p>
+					<p id="text2">By {{ obj.MainText }}</p>
+					<p id="text3">In {{ obj.SecondaryText }}</p>
+				</span>
+			</div>
+		</div>
+
+		<div class="contanier" v-if="PresenceType == 2">
+			<div class="presence">
+				<span id="cover">
+					<img :src="obj.LargeImage">
+				</span>
+				<span class="info">
+					<p id="name">{{ obj.name }}</p>
+					<p id="text2">{{ obj.MainText }}</p>
+					<p id="text3">{{ obj.SecondaryText }}</p>
 				</span>
 			</div>
 		</div>
@@ -20,20 +33,20 @@
 
 export default {
 	name:"PopUp",
-	props: ["obj", "toggle"],
+	props: ["obj", "PresenceType", "toggle"],
 	mounted() {
-		const song = document.getElementById("song")
-		const artist = document.getElementById("artist")
-		const album = document.getElementById("album")
+		const name_ = document.getElementById("name")
+		const text2_ = document.getElementById("text2")
+		const text3_ = document.getElementById("text3")
 
-		if (song.innerText.length > 30) {
-			song.innerText = song.innerText.slice(0, 17).replace(";" || "," || ".", "") + "..."
+		if (name_.innerText.length > 30) {
+			name_.innerText = name_.innerText.slice(0, 17) + "-"
 		}
-		if (artist.innerText.length > 30) {
-			artist.innerText = artist.innerText.slice(0, 17).replace(";" || "," || ".", "") + "..."
+		if (text2_.innerText.length > 30) {
+			text2_.innerText = text2_.innerText.slice(0, 17) + "-"
 		}
-		if (album.innerText.length > 30) {
-			album.innerText = album.innerText.slice(0, 17).replace(";" || "," || ".", "") + "..."
+		if (text3_.innerText.length > 30) {
+			text3_.innerText = text3_.innerText.slice(0, 17) + "-"
 		}
 	},
 	methods: {
@@ -67,7 +80,7 @@ export default {
 	border: 10px solid red;
 }
 
-.modal .container .spotify {
+.modal .container .presence {
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
@@ -75,22 +88,22 @@ export default {
 	animation: smooth-shake 7.5s ease-in-out infinite;
 }
 
-#art img {
+#cover img {
 	width: 256px;
 	height: 256px;
 	border-radius: 30%;
 }
 
-#song, #artist, #album {
+#name, #text2, #text3 {
 	color: #f8f8f2;
 	font-size: 20px;
 }
 
-#artist {
+#text2 {
 	color: #e76f51;
 }
 
-#album {
+#text3 {
 	color: #2a9d8f;
 }
 

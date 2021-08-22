@@ -4,6 +4,7 @@
 		<Tools />
 		<PopUp :obj="SpotifyObject" :toggle="toggle" v-if="isOpen"/>
 		<Github />
+		<Footer />
 	</div>
 </template>
 
@@ -17,6 +18,7 @@ import About from './components/About.vue'
 import Tools from './components/Tools.vue'
 import PopUp from './components/PopUp.vue'
 import Github from './components/Github.vue'
+import Footer from './components/Footer.vue'
 
 export default {
 	name: 'App',
@@ -24,7 +26,8 @@ export default {
 		About,
 		Tools,
 		PopUp,
-		Github
+		Github,
+		Footer
 	},
 	data() {
 		return { 

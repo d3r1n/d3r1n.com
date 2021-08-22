@@ -40,7 +40,7 @@ export default {
 				if (repo.description.length > 15) {
 					obj.description = repo.description.slice(0,30) + ".."
 				}
-				if (repo.name.length > 7) obj.name = repo.name.slice(0,10) + ".."
+				if (repo.name.length > 10) obj.name = repo.name.slice(0,10) + ".."
 			}
 			catch (e) {
 				

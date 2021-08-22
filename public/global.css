@@ -11,17 +11,24 @@ a {
 }
 
 .center {
-	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	margin: 10px auto;
 	width: 80%;
 	text-align: center;
+	justify-content: center;
+	align-items: center;
+
 }
 
 @media screen and (max-width: 1000px) {
 
 	.center {
-		margin: 0 auto;
+		margin: 10px auto;
 		width: 100%;
 		text-align: center;
+		justify-content: center;
+		align-items: center;
 	}
 	
 }
@@ -240,10 +247,10 @@ a {
 	height: 4px;
 	bottom: 0;
 	left: 0;
-	background: linear-gradient(133deg, rgba(80,250,123,1) 30%, #ff4d6d 65%);
+	background:  rgba(80,250,123,1);
 	transform-origin: bottom right;
-	transition: transform 0.25s ease-out;
-	box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.8);
+	transition: transform 0.3s ease-out;
+	box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.5);
 }
       
 .hover-underline:hover:after {

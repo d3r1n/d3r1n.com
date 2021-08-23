@@ -115,6 +115,7 @@ export default {
 								this.PresenceObject = SpotifyObject
 
 								document.querySelector(".profile").style.cursor = "pointer"
+								break
 							}
 							else if (activity.type == 0) {
 								let ActivityObject = {
@@ -127,6 +128,7 @@ export default {
 								this.PresenceObject = ActivityObject
 
 								document.querySelector(".profile").style.cursor = "pointer"
+								break
 							}
 						}
 					}
@@ -158,6 +160,7 @@ export default {
 								this.PresenceObject = SpotifyObject
 
 								document.querySelector(".profile").style.cursor = "pointer"
+								break
 							}
 							else if (activity.type == 0) {
 								let ActivityObject = {
@@ -170,6 +173,7 @@ export default {
 								this.PresenceObject = ActivityObject
 
 								document.querySelector(".profile").style.cursor = "pointer"
+								break
 							}
 						}
 					}

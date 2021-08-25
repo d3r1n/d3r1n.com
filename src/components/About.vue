@@ -56,6 +56,16 @@
 				<span id="spt">Coding in Vs Code...</span>
 			</div>
 
+			<div id="info" v-if="PresenceType == 3">
+				<span><span id="name">{{ lanyard.name }}</span><span id="tag">#{{ lanyard.tag }}</span></span>
+				<span id="spt">{{ lanyard.custom_status }}</span>
+			</div>
+
+			<div id="info" v-if="PresenceType == 4">
+				<span><span id="name">{{ lanyard.name }}</span><span id="tag">#{{ lanyard.tag }}</span></span>
+				<span id="spt"> <img :src="lanyard.emoji" style="width: 25px; height: 25px; animation: none; border-radius: 0;"> {{ lanyard.custom_status }}</span>
+			</div>
+
 			<div id="info" v-if="PresenceType == 0">
 				<span><span id="name">{{ lanyard.name }}</span><span id="tag">#{{ lanyard.tag }}</span></span>
 			</div>

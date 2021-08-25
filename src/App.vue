@@ -131,6 +131,27 @@ export default {
 								document.querySelector(".profile").classList.add("scale")
 								break
 							}
+							else if (activity.type == 4 && user.activities.length == 1) {
+								this.PresenceType = 3
+								document.querySelector(".profile").style.cursor = "auto"
+								document.querySelector(".profile").classList.remove("scale")
+								if (activity.emoji == undefined) {
+									this.lanyard.custom_status = activity.state
+								}
+								else if (activity.emoji.id == undefined) {
+									this.lanyard.custom_status = activity.state
+								}
+								else {
+									this.PresenceType = 4
+									this.lanyard.custom_status = activity.state
+									if (activity.emoji.animated) {
+										this.lanyard.emoji = `https://cdn.discordapp.com/emojis/${activity.emoji.id}.gif`
+									}
+
+									else this.lanyard.emoji = `https://cdn.discordapp.com/emojis/${activity.emoji.id}.png`
+								}
+
+							}
 						}
 					}
 
@@ -176,6 +197,26 @@ export default {
 
 								document.querySelector(".profile").style.cursor = "pointer"
 								break
+							}
+							else if (activity.type == 4 && user.activities.length == 1) {
+								this.PresenceType = 3
+								document.querySelector(".profile").style.cursor = "auto"
+								document.querySelector(".profile").classList.remove("scale")
+								if (activity.emoji == undefined) {
+									this.lanyard.custom_status = activity.state
+								}
+								else if (activity.emoji.id == undefined) {
+									this.lanyard.custom_status = activity.state
+								}
+								else {
+									this.PresenceType = 4
+									this.lanyard.custom_status = activity.state
+									if (activity.emoji.animated) {
+										this.lanyard.emoji = `https://cdn.discordapp.com/emojis/${activity.emoji.id}.gif`
+									}
+
+									else this.lanyard.emoji = `https://cdn.discordapp.com/emojis/${activity.emoji.id}.png`
+								}
 							}
 						}
 					}

@@ -47,7 +47,7 @@
 		<div class="profile" @click="toggle">
 			<div id="status" :style="{ background: lanyard.status }">
 				<img src="https://www.howtodoanything.org/wp-content/uploads/2018/03/clownfish.jpg" v-if="lanyard.avatar == undefined">
-				<img :src="`https://cdn.discordapp.com/avatars/${lanyard.id}/${lanyard.avatar}.png?size=512`" v-else>
+				<img :src="lanyard.avatar" v-else>
 			</div>
 			
 			<div id="info" v-if="PresenceType == 1">

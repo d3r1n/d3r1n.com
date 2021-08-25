@@ -97,8 +97,14 @@ export default {
 					this.lanyard = {
 						id: user.discord_user.id,
 						name: user.discord_user.username,
-						avatar: user.discord_user.avatar,
+						avatar: isGif(user.discord_user.id, user.discord_user.avatar),
 						tag: user.discord_user.discriminator,
+					}
+
+					function isGif(id,avatar) {
+						
+						if (avatar.startsWith("a_")) return `https://cdn.discordapp.com/avatars/${id}/${avatar}.gif?size=256`
+						else return `https://cdn.discordapp.com/avatars/${id}/${avatar}.png?size=512`
 					}
 
 					if (user.activities.length > 0) {

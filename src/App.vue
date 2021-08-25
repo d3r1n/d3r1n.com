@@ -115,7 +115,7 @@ export default {
 								this.PresenceObject = SpotifyObject
 
 								document.querySelector(".profile").style.cursor = "pointer"
-								break
+								document.querySelector(".profile").classList.add("scale")
 							}
 							else if (activity.type == 0) {
 								let ActivityObject = {
@@ -128,6 +128,7 @@ export default {
 								this.PresenceObject = ActivityObject
 
 								document.querySelector(".profile").style.cursor = "pointer"
+								document.querySelector(".profile").classList.add("scale")
 								break
 							}
 						}
@@ -136,6 +137,7 @@ export default {
 					else {
 						this.PresenceType = 0
 						document.querySelector(".profile").style.cursor = "auto"
+						document.querySelector(".profile").classList.remove("scale")
 					}
 
 					this.lanyard.status = Colors[user.discord_status]

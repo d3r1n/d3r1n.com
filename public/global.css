@@ -80,6 +80,7 @@ a {
 	align-items: center;
 	box-shadow: 0px 10px 21px -12px rgb(0 0 0 / 75%);
 	background: linear-gradient(150deg, #ff79c6 30%, rgba(255, 121, 198, 0.7) 70%);
+	animation: jello-horizontal-anti 0.9s both;
 }
 
 .skill p {
@@ -295,11 +296,11 @@ a {
 	padding: 15px;
 	padding-left: 20px;
 	padding-right: 20px;
+	animation: slide-top-anti 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 	-webkit-box-shadow: 0px 10px 21px -12px rgb(0 0 0 / 75%);
 	box-shadow: 0px 10px 21px -12px rgb(0 0 0 / 75%);	
 	color: #f8f8f2;
 	background: linear-gradient(160deg, #4895ef, rgba(72, 149, 239, 0.2) 99%);
-	transition: all 0.3s linear;
 }
 
 .repo:hover {
@@ -317,7 +318,15 @@ a {
 	  transform: translateY(-50px) scale(1.1);
 	}
 } 
-      
+@keyframes slide-top-anti {
+	0% {
+		transform: translateY(-50px) scale(1.1);
+	}
+	100% {
+		transform: translateY(0);
+	  
+	}
+}     
 
 .repo_top {
 	padding:10px;
@@ -569,7 +578,32 @@ a {
 	100% {
 	  transform: scale3d(1, 1, 1);
 	}
-      }    
+}
+
+@keyframes jello-horizontal-anti {
+	0% {
+	  transform: scale3d(1, 1, 1);
+	}
+	30% {
+		transform: scale3d(1.05, 0.95, 1);
+	}
+	40% {
+	 
+	  transform: scale3d(0.95, 1.05, 1);
+	}
+	50% {
+	  transform: scale3d(1.15, 0.85, 1);
+	}
+	65% {
+		transform: scale3d(0.75, 1.25, 1);
+	}
+	75% {
+		transform: scale3d(1.25, 0.75, 1);
+	}
+	100% {
+	  transform: scale3d(1, 1, 1);
+	}
+} 
 /* FALLBACK CSS */
 .fallback {
 	margin-top: 20%;

@@ -183,8 +183,17 @@ a {
 .profile {
 	display: flex;
 	flex-direction: column;
+	margin-left: 50px;
 	align-items: center;
 	justify-self: center;
+}
+
+@media screen and (max-width:1000px) {
+
+	.profile {
+		margin-left: 0;
+	}
+	
 }
 
 .profile img {
@@ -223,9 +232,22 @@ a {
 	color: #50fa7b;
 }
 
-.profile #info #spt {
+#spt {
+	margin-top: 5px;
 	font-size: 20px;
 	opacity: 0.8;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#spt #emoji {
+	width: 30px; 
+	height: 30px; 
+	animation: none;
+	margin-right: 10px;
+	border-radius: 0;
+	opacity: 1;
 }
 
 .footer {
@@ -459,14 +481,14 @@ a {
 	align-items: center;
 }
 
-#links #devto, #links #github, #links #discord{
+#links #devto, #links #github, #links #discord, #links #spotify_lnk{
 	width: 30px;
-	margin: 5px;
+	margin: 4px;
 	fill:#f8f8f2;
 	transition: all 0.3s linear;
 }
 
-#links #devto:hover, #links #github:hover, #links #discord:hover{
+#links #devto:hover, #links #github:hover, #links #discord:hover, #links #spotify_lnk:hover{
 	transform: scale(1.15) translateY(-7px) rotate(15deg);
 	cursor: pointer;
 	fill: rgba(80,250,123,1);

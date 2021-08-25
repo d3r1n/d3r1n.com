@@ -234,7 +234,7 @@ export default {
 
 	methods: {
 		toggle() {
-			if(this.PresenceType != 0) {
+			if(this.PresenceType in [0, 4]) {
 				this.isOpen = !this.isOpen;
 			}
 			console.log(this.isOpen)

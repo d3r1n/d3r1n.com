@@ -79,9 +79,7 @@ a {
 	justify-content: center;
 	align-items: center;
 	box-shadow: 0px 10px 21px -12px rgb(0 0 0 / 75%);
-	background: linear-gradient(160deg, #ff79c6, rgba(0, 0, 0, 0));
-	animation: clear 2s linear infinite;
-	transition: all 0.3s linear;
+	background: linear-gradient(150deg, #ff79c6 30%, rgba(255, 121, 198, 0.7) 70%);
 }
 
 .skill p {
@@ -92,8 +90,7 @@ a {
 
 .skill:hover {
 	cursor: pointer;
-	transform: translateY(-5px) scale(1.1) rotate(-5deg);
-	background: #ff79c6;
+	animation: jello-horizontal 0.9s both;
 	box-shadow: 0px 49px 36px 24px rgba(0,0,0,0.41);
 	-webkit-box-shadow: 0px 49px 36px 24px rgba(0,0,0,0.41);
 	-moz-box-shadow: 0px 49px 36px 24px rgba(0,0,0,0.41);
@@ -295,7 +292,6 @@ a {
 	background-color: #292b42;
 	border-radius: 15px;
 	height: auto;
-	-webkit-transition: 250ms;
 	padding: 15px;
 	padding-left: 20px;
 	padding-right: 20px;
@@ -307,10 +303,21 @@ a {
 }
 
 .repo:hover {
-	transform: scale(1.1) translateY(-15px);
+	animation: slide-top 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	animation-delay: 0.15s;
 	-webkit-box-shadow: 0px 10px 21px -12px rgb(0 0 0 / 75%);
 	box-shadow: 0px 50px 50px -12px rgb(0 0 0 / 75%);
 }
+
+@keyframes slide-top {
+	0% {
+	  transform: translateY(0);
+	}
+	100% {
+	  transform: translateY(-50px) scale(1.1);
+	}
+} 
+      
 
 .repo_top {
 	padding:10px;
@@ -384,8 +391,16 @@ a {
 
 #name, #text2, #text3 {
 	color: #f8f8f2;
+	cursor: pointer;
 	font-size: 20px;
+	transition:all 0.5s cubic-bezier(0.6, -0.28, 0.735, 0.045);
 }
+
+#name:hover, #text2:hover, #text3:hover {
+	transform: scale(1.1);
+	color: #50fa7b;
+}
+
 
 #text2 {
 	color: #e76f51;
@@ -532,6 +547,29 @@ a {
 	animation: rotating 2s linear infinite;
 }
 
+@keyframes jello-horizontal {
+	0% {
+	  transform: scale3d(1, 1, 1);
+	}
+	30% {
+	  transform: scale3d(1.25, 0.75, 1);
+	}
+	40% {
+	  transform: scale3d(0.75, 1.25, 1);
+	}
+	50% {
+	  transform: scale3d(1.15, 0.85, 1);
+	}
+	65% {
+	  transform: scale3d(0.95, 1.05, 1);
+	}
+	75% {
+	  transform: scale3d(1.05, 0.95, 1);
+	}
+	100% {
+	  transform: scale3d(1, 1, 1);
+	}
+      }    
 /* FALLBACK CSS */
 .fallback {
 	margin-top: 20%;

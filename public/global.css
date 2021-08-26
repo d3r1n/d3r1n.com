@@ -169,8 +169,10 @@ a {
 .text #name {
 	display: inline-block;
 	color: #ff79c6;
+	cursor: pointer;
 	transition: all 0.5s ease;
 	font-weight: bold;
+	font-size: 30px;
 }
 
 .text #name:hover {

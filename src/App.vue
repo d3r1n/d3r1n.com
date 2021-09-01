@@ -109,7 +109,21 @@ export default {
 
 					if (user.activities.length > 0) {
 						for (let activity of user.activities) {
-							if (activity.type == 2) {
+							if (activity.type == 0) {
+								let ActivityObject = {
+									name: activity.name,
+									LargeImage: `https://cdn.discordapp.com/app-assets/${activity.application_id}/${activity.assets.large_image}.png?size=512`,
+									MainText: activity.details,
+									SecondaryText: activity.state,
+								}
+								this.PresenceType = 2
+								this.PresenceObject = ActivityObject
+
+								document.querySelector(".profile").style.cursor = "pointer"
+								document.querySelector(".profile").classList.add("scale")
+								break
+							}
+							else if (activity.type == 2) {
 								let SpotifyObject = {
 									name: activity.details,
 									LargeImage: `https://i.scdn.co/image/${activity.assets.large_image.replace("spotify:", "")}`,
@@ -119,19 +133,6 @@ export default {
 								}
 								this.PresenceType = 1
 								this.PresenceObject = SpotifyObject
-
-								document.querySelector(".profile").style.cursor = "pointer"
-								document.querySelector(".profile").classList.add("scale")
-							}
-							else if (activity.type == 0) {
-								let ActivityObject = {
-									name: activity.name,
-									LargeImage: `https://cdn.discordapp.com/app-assets/${activity.application_id}/${activity.assets.large_image}.png?size=512`,
-									MainText: activity.details,
-									SecondaryText: activity.state,
-								}
-								this.PresenceType = 2
-								this.PresenceObject = ActivityObject
 
 								document.querySelector(".profile").style.cursor = "pointer"
 								document.querySelector(".profile").classList.add("scale")
@@ -156,7 +157,7 @@ export default {
 
 									else this.lanyard.emoji = `https://cdn.discordapp.com/emojis/${activity.emoji.id}.png`
 								}
-
+								break
 							}
 						}
 					}
@@ -177,7 +178,20 @@ export default {
 
 					if (user.activities.length > 0) {
 						for (let activity of user.activities) {
-							if (activity.type == 2) {
+							if (activity.type == 0) {
+								let ActivityObject = {
+									name: activity.name,
+									LargeImage: `https://cdn.discordapp.com/app-assets/${activity.application_id}/${activity.assets.large_image}.png?size=512`,
+									MainText: activity.details,
+									SecondaryText: activity.state,
+								}
+								this.PresenceType = 2
+								this.PresenceObject = ActivityObject
+
+								document.querySelector(".profile").style.cursor = "pointer"
+								break
+							}
+							else if (activity.type == 2) {
 								let SpotifyObject = {
 									name: activity.details,
 									LargeImage: `https://i.scdn.co/image/${activity.assets.large_image.replace("spotify:", "")}`,
@@ -187,19 +201,6 @@ export default {
 								}
 								this.PresenceType = 1
 								this.PresenceObject = SpotifyObject
-
-								document.querySelector(".profile").style.cursor = "pointer"
-								break
-							}
-							else if (activity.type == 0) {
-								let ActivityObject = {
-									name: activity.name,
-									LargeImage: `https://cdn.discordapp.com/app-assets/${activity.application_id}/${activity.assets.large_image}.png?size=512`,
-									MainText: activity.details,
-									SecondaryText: activity.state,
-								}
-								this.PresenceType = 2
-								this.PresenceObject = ActivityObject
 
 								document.querySelector(".profile").style.cursor = "pointer"
 								break
@@ -240,7 +241,7 @@ export default {
 
 	methods: {
 		toggle() {
-			if(this.PresenceType in [0, 4]) {
+			if(this.PresenceType == 1 || this.PresenceType == 2) {
 				this.isOpen = !this.isOpen;
 			}
 			console.log(this.isOpen)

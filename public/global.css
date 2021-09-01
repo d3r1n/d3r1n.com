@@ -397,6 +397,7 @@ a {
 	bottom:0;
 	right:0;
 	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
 
 	z-index: 9998;
 	width: 100%;

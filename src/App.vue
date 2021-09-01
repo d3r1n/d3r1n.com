@@ -10,6 +10,7 @@
 
 <script>
 
+// CONFIG: Change the DISCORD_ID with your own DISCORD ID
 const CONFIG = {
 	DISCORD_ID: "704758931343278162"
 }
@@ -29,7 +30,8 @@ export default {
 		Github,
 		Footer
 	},
-	data() {
+	data() { 
+		// All the Global Objects - Change the name tag with your own tag and discord name (Fallback name and tag)
 		return { 
 			PresenceObject: {},
 			PresenceType: 0,
@@ -38,7 +40,7 @@ export default {
 				id: String,
 				name: "d3r1n",
 				avatar: undefined,
-				tag: "3199",
+				tag: "1000",
 				status: "#99aab5",
 			},
 		}
@@ -94,22 +96,25 @@ export default {
 				if (reqDataJSON.t == "INIT_STATE") {
 					const user = reqDataJSON.d;
 
-					this.lanyard = {
+					this.lanyard = { // initialize the basic lanyard object 
 						id: user.discord_user.id,
 						name: user.discord_user.username,
 						avatar: isGif(user.discord_user.id, user.discord_user.avatar),
 						tag: user.discord_user.discriminator,
 					}
 
+					// Checks if the avatar is gif; if it is returns the .gif extension; if it is not, returns .png extension
 					function isGif(id,avatar) {
 						
 						if (avatar.startsWith("a_")) return `https://cdn.discordapp.com/avatars/${id}/${avatar}.gif?size=256`
 						else return `https://cdn.discordapp.com/avatars/${id}/${avatar}.png?size=512`
 					}
-
-					if (user.activities.length > 0) {
+					
+					// if activity array is not empty loop over activities and return PresenceObject
+					if (user.activities.length > 0) { 
 						for (let activity of user.activities) {
-							if (activity.type == 0) {
+
+							if (activity.type == 0) { // Visual Studio Code Presence
 								let ActivityObject = {
 									name: activity.name,
 									LargeImage: `https://cdn.discordapp.com/app-assets/${activity.application_id}/${activity.assets.large_image}.png?size=512`,
@@ -123,7 +128,8 @@ export default {
 								document.querySelector(".profile").classList.add("scale")
 								break
 							}
-							else if (activity.type == 2) {
+
+							else if (activity.type == 2) { // Spotify Presence
 								let SpotifyObject = {
 									name: activity.details,
 									LargeImage: `https://i.scdn.co/image/${activity.assets.large_image.replace("spotify:", "")}`,
@@ -138,7 +144,8 @@ export default {
 								document.querySelector(".profile").classList.add("scale")
 								break
 							}
-							else if (activity.type == 4 && user.activities.length == 1) {
+
+							else if (activity.type == 4 && user.activities.length == 1) { // if there is not spotify or vscode activity returns the custom status with custom Emoji support 
 								this.PresenceType = 3
 								document.querySelector(".profile").style.cursor = "auto"
 								document.querySelector(".profile").classList.remove("scale")
@@ -162,7 +169,7 @@ export default {
 						}
 					}
 
-					else {
+					else { // otherwise returns nothing and Sets the Type 0
 						this.PresenceType = 0
 						document.querySelector(".profile").style.cursor = "auto"
 						document.querySelector(".profile").classList.remove("scale")
@@ -172,11 +179,11 @@ export default {
 
 				}
 
-				else if (reqDataJSON.t == "PRESENCE_UPDATE") {
+				else if (reqDataJSON.t == "PRESENCE_UPDATE") { // update presence ( Every Heartbeat )
 					const user = reqDataJSON.d;
 					this.lanyard.status = Colors[user.discord_status]
 
-					if (user.activities.length > 0) {
+					if (user.activities.length > 0) { 
 						for (let activity of user.activities) {
 							if (activity.type == 0) {
 								let ActivityObject = {
@@ -240,7 +247,7 @@ export default {
 	},
 
 	methods: {
-		toggle() {
+		toggle() { // if presence type is vscode or spotify toggle is enabled
 			if(this.PresenceType == 1 || this.PresenceType == 2) {
 				this.isOpen = !this.isOpen;
 			}

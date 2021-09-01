@@ -26,11 +26,11 @@ export default {
 	},
 	async mounted() {
 
-		let user = "d3r1n"
+		let user = "d3r1n" // change it with your own Github username
 		const result = await fetch(`https://api.github.com/users/${user}/repos`);
 		let repos = filterRepos(await result.json());
 
-		for (let repo of repos) {
+		for (let repo of repos) { // loop through the repositories
 			let obj = new Object
 			obj.name = repo.name
 			obj.stars = repo.stargazers_count
@@ -52,7 +52,7 @@ export default {
 			this.repos.push(obj)
 		}
 
-		function filterRepos(repos) {
+		function filterRepos(repos) { // filter repositories according to date (newest first)
 			const found = new Array;
 
 			for (let repo of repos) {

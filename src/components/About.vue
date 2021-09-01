@@ -85,7 +85,7 @@ export default {
 	mounted() {
 		const profile = document.querySelector(".profile")
 
-		if (this.PresenceType in [0, 4]) {
+		if (this.PresenceType == 1 || this.PresenceType == 2) {
 			profile.classList.add("scale")
 		}
 		else {

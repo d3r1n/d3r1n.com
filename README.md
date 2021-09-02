@@ -16,5 +16,5 @@ First you **need to** join **Lanyard's Server** to be able to see your discord a
 \
 Remove or Replace the gscript in the header (Google Analytics)\
 \
-Now navigate to `About.vue` and scroll to `<script>` tag. **Change the `DISCORD_ID` with your discord id**.
+Now navigate to `App.vue` and scroll to `<script>` tag. **Change the `DISCORD_ID` with your discord id**.
 do whatever you want <a href="https://emoji.gg/emoji/5199-brown-heart"><img src="https://emoji.gg/assets/emoji/5199-brown-heart.gif" width="16px" height="16px" alt="brown_heart">

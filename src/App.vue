@@ -12,7 +12,7 @@
 
 // CONFIG: Change the DISCORD_ID with your own DISCORD ID
 const CONFIG = {
-	DISCORD_ID: "704758931343278162"
+	DISCORD_ID: "889020993559986177"
 }
 
 import About from './components/About.vue'
@@ -40,14 +40,14 @@ export default {
 				id: String,
 				name: "d3r1n",
 				avatar: undefined,
-				tag: "1000",
+				tag: "1413",
 				status: "#99aab5",
 			},
 		}
 	},
 	async mounted() {
 
-		console.log("%c DEBUG CONSOLE ", "color: green; background: black; font-weight: bold; font-size: 20px;")
+		console.log("%c DEBUG CONSOLE ", "color: green; background: black; font-weight: bold; font-size: 15px;")
 
 		const OPCODES = {
 			INFO: 0,
@@ -121,11 +121,13 @@ export default {
 									MainText: activity.details,
 									SecondaryText: activity.state,
 								}
+
 								this.PresenceType = 2
 								this.PresenceObject = ActivityObject
 
 								document.querySelector(".profile").style.cursor = "pointer"
 								document.querySelector(".profile").classList.add("scale")
+
 								break
 							}
 
@@ -137,11 +139,13 @@ export default {
 									SecondaryText: activity.assets.large_text,
 									track_id: activity.sync_id
 								}
+
 								this.PresenceType = 1
 								this.PresenceObject = SpotifyObject
 
 								document.querySelector(".profile").style.cursor = "pointer"
 								document.querySelector(".profile").classList.add("scale")
+
 								break
 							}
 
@@ -152,18 +156,20 @@ export default {
 								if (activity.emoji == undefined) {
 									this.lanyard.custom_status = activity.state
 								}
-								else if (activity.emoji.id == undefined) {
-									this.lanyard.custom_status = activity.state
+								else if (activity.emoji != undefined && activity.emoji.id == undefined && activity.emoji.name != undefined) {
+									this.lanyard.custom_status = `${activity.emoji.name} ${activity.state}`
 								}
-								else {
+								else if (activity.emoji != undefined && activity.emoji.name != undefined) {
 									this.PresenceType = 4
 									this.lanyard.custom_status = activity.state
-									if (activity.emoji.animated) {
-										this.lanyard.emoji = `https://cdn.discordapp.com/emojis/${activity.emoji.id}.gif`
+
+									if (activity.emoji.id != undefined && activity.emoji.animated) {
+										this.lanyard.emoji = `https://cdn.discordapp.com/emojis/${activity.emoji.name}.gif`
 									}
 
-									else this.lanyard.emoji = `https://cdn.discordapp.com/emojis/${activity.emoji.id}.png`
+									else this.lanyard.emoji = `https://cdn.discordapp.com/emojis/${activity.emoji.name}.png`
 								}
+
 								break
 							}
 						}
@@ -175,7 +181,7 @@ export default {
 						document.querySelector(".profile").classList.remove("scale")
 					}
 
-					this.lanyard.status = Colors[user.discord_status]
+					this.lanyard.status = Colors[user.discord_status]	
 
 				}
 
@@ -212,25 +218,28 @@ export default {
 								document.querySelector(".profile").style.cursor = "pointer"
 								break
 							}
-							else if (activity.type == 4 && user.activities.length == 1) {
+							else if (activity.type == 4 && user.activities.length == 1) { // if there is not spotify or vscode activity returns the custom status with custom Emoji support 
 								this.PresenceType = 3
 								document.querySelector(".profile").style.cursor = "auto"
 								document.querySelector(".profile").classList.remove("scale")
 								if (activity.emoji == undefined) {
 									this.lanyard.custom_status = activity.state
 								}
-								else if (activity.emoji.id == undefined) {
-									this.lanyard.custom_status = activity.state
+								else if (activity.emoji != undefined && activity.emoji.id == undefined && activity.emoji.name != undefined) {
+									this.lanyard.custom_status = `${activity.emoji.name} ${activity.state}`
 								}
-								else {
+								else if (activity.emoji != undefined && activity.emoji.name != undefined) {
 									this.PresenceType = 4
 									this.lanyard.custom_status = activity.state
-									if (activity.emoji.animated) {
-										this.lanyard.emoji = `https://cdn.discordapp.com/emojis/${activity.emoji.id}.gif`
+
+									if (activity.emoji.id != undefined && activity.emoji.animated) {
+										this.lanyard.emoji = `https://cdn.discordapp.com/emojis/${activity.emoji.name}.gif`
 									}
 
-									else this.lanyard.emoji = `https://cdn.discordapp.com/emojis/${activity.emoji.id}.png`
+									else this.lanyard.emoji = `https://cdn.discordapp.com/emojis/${activity.emoji.name}.png`
 								}
+
+								break
 							}
 						}
 					}

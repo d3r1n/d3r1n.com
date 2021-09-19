@@ -12,7 +12,7 @@
 
 // CONFIG: Change the DISCORD_ID with your own DISCORD ID
 const CONFIG = {
-	DISCORD_ID: "889020993559986177"
+	DISCORD_ID: "704758931343278162"
 }
 
 import About from './components/About.vue'
